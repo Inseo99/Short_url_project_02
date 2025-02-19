@@ -34,6 +34,8 @@ public class All {
     public void work1() {
         log.debug("initAll start");
 
+        log.info("initAll start");
+
         if (memberService.count() > 0) return;
 
         Member memberSystem = memberService.join("system", "1234", "시스템").getData();
