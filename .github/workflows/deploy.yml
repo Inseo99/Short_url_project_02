@@ -13,6 +13,8 @@ on:
 jobs:
   makeTagAndRelease:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     outputs:
       tag_name: ${{ steps.create_tag.outputs.new_tag }}
     steps:
@@ -70,6 +72,8 @@ jobs:
             ghcr.io/${{ env.OWNER_LC }}/surl:latest
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     needs: [ buildImageAndPush ]
     steps:
       - name: AWS SSM Send-Command
